@@ -2,7 +2,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   boot = lib.mkIf config.boot.plymouth.enable {
     consoleLogLevel = 0;
     initrd.verbose = false;

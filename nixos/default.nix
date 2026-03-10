@@ -2,7 +2,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   imports = [
     ./gnome.nix
     ./home.nix
@@ -22,7 +23,7 @@
       desktop = lib.mkEnableOption "the desktop configurations";
 
       inputs = lib.mkOption {
-        default = {};
+        default = { };
         description = "List of additional flakes";
       };
     };

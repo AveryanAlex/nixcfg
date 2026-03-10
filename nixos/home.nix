@@ -3,22 +3,21 @@
   config,
   options,
   ...
-}: let
+}:
+let
   username = config.nixcfg.username;
   isHM = options ? home-manager;
-in {
+in
+{
   options = {
     hm = lib.mkOption {
-      type =
-        if isHM
-        then options.home-manager.users.type.nestedTypes.elemType
-        else lib.types.attrs;
-      default = {};
+      type = if isHM then options.home-manager.users.type.nestedTypes.elemType else lib.types.attrs;
+      default = { };
     };
   };
 
   config =
-    {}
+    { }
     // lib.optionalAttrs isHM {
       home-manager.users.${username} = lib.mkAliasDefinitions options.hm;
     };

@@ -26,7 +26,10 @@
       # show full trace on eval errors
       show-trace = true;
       # add @wheel to trusted users
-      trusted-users = ["root" "@wheel"];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       # build in cgroups
       use-cgroups = true;
       # cleanup $HOME

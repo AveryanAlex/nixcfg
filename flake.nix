@@ -6,18 +6,22 @@
     };
   };
 
-  outputs = inputs @ {srvos, ...}: {
-    nixosModules.default = {
-      imports = let
-        common = name: "${srvos}/nixos/common/${name}.nix";
-      in [
-        (common "openssh")
-        (common "serial")
-        (common "sudo")
-        (common "upgrade-diff")
-        (common "well-known-hosts")
-        ./nixos
-      ];
+  outputs =
+    inputs@{ srvos, ... }:
+    {
+      nixosModules.default = {
+        imports =
+          let
+            common = name: "${srvos}/nixos/common/${name}.nix";
+          in
+          [
+            (common "openssh")
+            (common "serial")
+            (common "sudo")
+            (common "upgrade-diff")
+            (common "well-known-hosts")
+            ./nixos
+          ];
+      };
     };
-  };
 }
